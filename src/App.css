@@ -1,0 +1,270 @@
+/* ====== VARIÁVEIS DE TEMA ====== */
+:root {
+  --color-bg: #f8f9fa;
+  --color-text: #222;
+  --color-primary: #004999;
+  --color-accent: #007bff;
+  --color-focus: #00bfff;
+  --color-border: #ccc;
+  --color-card: #ffffff;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-success: #2e8b57;
+  --color-error: #c62828;
+  --color-warning: #ffcc00;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #121212;
+    --color-text: #f1f1f1;
+    --color-primary: #0066cc;
+    --color-accent: #3399ff;
+    --color-focus: #ffcc00;
+    --color-border: #444;
+    --color-card: #1e1e1e;
+    --color-shadow: rgba(255, 255, 255, 0.05);
+  }
+}
+
+/* ====== CONTAINER PRINCIPAL ====== */
+.app-container {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  padding: 20px;
+  min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ====== CABEÇALHO ====== */
+.app-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.app-header button {
+  background: #fff;
+  color: var(--color-primary);
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.app-header button:hover,
+.app-header button:focus {
+  background: #e6f0ff;
+  outline: 3px solid var(--color-focus);
+  transform: scale(1.03);
+}
+
+/* ====== BOTÕES E CAMPOS ====== */
+button,
+input,
+select,
+textarea {
+  padding: 8px 12px;
+  margin: 5px 0;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  outline: 2px solid transparent;
+  transition: background 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--color-focus);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ====== GRID DE LIVROS ====== */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.book-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 5px var(--color-shadow);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+.book-card:hover,
+.book-card:focus-within {
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.book-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* ====== FORMULÁRIOS ====== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+form button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem;
+}
+
+form button:hover,
+form button:focus {
+  background-color: #002f6c;
+}
+
+/* ====== MENSAGENS ====== */
+.form-message {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.form-message.success {
+  color: var(--color-success);
+}
+
+.form-message.error {
+  color: var(--color-error);
+}
+
+/* ====== PAINEL ADMIN ====== */
+.admin-container {
+  padding: 2rem;
+  background-color: var(--color-bg);
+  border-radius: 12px;
+}
+
+.admin-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+}
+
+.admin-forms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.form-card {
+  flex: 1 1 30%;
+  min-width: 280px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px var(--color-shadow);
+}
+
+.form-card h3 {
+  margin-bottom: 1rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.book-list-section {
+  background: var(--color-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* ====== PAINEL DE EMPRÉSTIMOS ====== */
+.loan-panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 6px var(--color-shadow);
+  margin-top: 20px;
+}
+
+.loan-panel h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+/* ====== ACESSIBILIDADE ====== */
+:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+[aria-label],
+[role] {
+  cursor: default;
+}
+
+/* ====== PLUGIN VLibras ====== */
+#vlibras {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ====== RESPONSIVIDADE ====== */
+@media (max-width: 900px) {
+  .admin-forms {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-card {
+    width: 90%;
+  }
+
+  .book-card img {
+    height: 180px;
+  }
+
+  .loan-table th,
+  .loan-table td {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+}

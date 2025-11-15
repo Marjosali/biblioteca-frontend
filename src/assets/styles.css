@@ -1,0 +1,315 @@
+/* ======================= */
+/* ===== VARIÁVEIS ======= */
+/* ======================= */
+:root {
+  --color-bg: #f8f9fa;
+  --color-card: #ffffff;
+  --color-text: #222222;
+  --color-primary: #28a745;
+  --color-primary-hover: #218838;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-warning: #ffc107;
+  --color-focus: #4caf50;
+  --radius: 8px;
+  --transition: 0.3s;
+}
+
+/* ======================= */
+/* ===== RESET ========= */
+/* ======================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  min-height: 100vh;
+  padding: 1rem;
+  transition: background-color var(--transition), color var(--transition), font-size var(--transition);
+}
+
+/* ===== Zoom ===== */
+body.zoom-small { font-size: 90%; }
+body.zoom-medium { font-size: 100%; }
+body.zoom-large { font-size: 120%; }
+
+/* ======================= */
+/* ===== DARK MODE ====== */
+/* Agora funciona no body inteiro */
+/* ======================= */
+body.dark-mode {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.dark-mode .book-card,
+body.dark-mode form,
+body.dark-mode ul li,
+body.dark-mode .tab-navigation button,
+body.dark-mode .accessibility-controls button {
+  background-color: #222 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+/* ======================= */
+/* ===== ALTO CONTRASTE == */
+/* Segue recomendações WCAG */
+/* ======================= */
+body.high-contrast {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.high-contrast * {
+  background-color: transparent !important;
+  color: #00ff00 !important;
+  border-color: #00ff00 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+
+/* ======================= */
+/* ===== HEADERS ======== */
+h1, h2, h3, h4, h5 {
+  margin-bottom: 0.75rem;
+}
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+
+/* ======================= */
+/* ===== LINKS =========== */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+a:hover,
+a:focus {
+  text-decoration: underline;
+  outline: none;
+}
+
+/* ======================= */
+/* ===== FORMULÁRIOS ===== */
+form {
+  background-color: var(--color-card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 450px;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+form label {
+  font-weight: 600;
+}
+
+form input,
+form select,
+form input[type="file"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  width: 100%;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+form input:focus,
+form select:focus {
+  outline: 3px solid var(--color-focus);
+  border-color: var(--color-focus);
+}
+
+form button {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+form button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+form button:hover:not(:disabled),
+form button:focus:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+/* ======================= */
+/* ===== MENSAGENS ====== */
+.form-message {
+  text-align: center;
+  font-weight: bold;
+  padding: 0.6rem;
+  border-radius: var(--radius);
+}
+
+.form-message.success { background-color: var(--color-success); color: #fff; }
+.form-message.error { background-color: var(--color-error); color: #fff; }
+.form-message.warning { background-color: var(--color-warning); color: #222; }
+
+/* ======================= */
+/* ===== LISTAS ========= */
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--radius);
+  background-color: var(--color-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ======================= */
+/* ===== TABELAS ======== */
+.book-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.book-table th,
+.book-table td {
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+}
+
+.book-table th {
+  background-color: #f3f3f3;
+}
+
+/* ======================= */
+/* ===== BOTÕES ========= */
+.book-action-btn.create {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.book-action-btn.create:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.book-action-btn.delete {
+  background-color: var(--color-error);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius);
+}
+
+.book-action-btn.delete:hover {
+  background-color: #a32a00;
+}
+
+/* ======================= */
+/* ===== CARTÃO LIVRO === */
+.book-card {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.book-card:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+
+.book-cover {
+  width: 80px;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+
+/* ======================= */
+/* ===== ABAS =========== */
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.tab-navigation button {
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  background-color: var(--color-card);
+  cursor: pointer;
+}
+
+.tab-navigation button.active-tab {
+  border-color: var(--color-primary);
+  outline: 3px solid var(--color-focus);
+}
+
+/* ======================= */
+/* ===== CONTROLES ====== */
+.accessibility-controls button {
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--color-primary);
+  background-color: var(--color-card);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.accessibility-controls button:hover,
+.accessibility-controls button:focus {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* ======================= */
+/* ===== FOOTER ========= */
+.app-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+}
+
+/* ======================= */
+/* ===== FOCO VISÍVEL === */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ======================= */
+/* ===== RESPONSIVO ====== */
+@media (max-width: 800px) {
+  .book-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .accessibility-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

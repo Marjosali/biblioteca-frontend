@@ -1,0 +1,161 @@
+/* ======== Estilos Globais ======== */
+:root {
+  --color-bg: #f9f9fb;
+  --color-text: #222;
+  --color-primary: #2c3e50;
+  --color-accent: #0066cc;
+  --color-focus: #ffcc00;
+  --color-border: #ccc;
+
+  /* Modo escuro */
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #1b1b1b;
+    --color-text: #f1f1f1;
+    --color-primary: #f5f6fa;
+    --color-accent: #3399ff;
+    --color-border: #333;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ======== Estrutura principal ======== */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+/* ======== Cabeçalho ======== */
+.app-header {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.app-header h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.user-info button {
+  background: var(--color-accent);
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.user-info button:hover,
+.user-info button:focus {
+  background: #004999;
+  outline: 2px solid var(--color-focus);
+}
+
+/* ======== Conteúdo principal ======== */
+main {
+  flex: 1;
+}
+
+section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  section {
+    background-color: #2a2a2a;
+  }
+}
+
+h2,
+h3 {
+  color: var(--color-accent);
+  margin-bottom: 0.5rem;
+}
+
+/* ======== Painéis administrativos ======== */
+.admin-panels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.admin-panel {
+  flex: 1;
+  min-width: 280px;
+  border: 1px dashed var(--color-border);
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(0, 102, 204, 0.05);
+}
+
+/* ======== Rodapé ======== */
+.app-footer {
+  margin-top: auto;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}
+
+/* ======== Acessibilidade ======== */
+:focus {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+[tabindex="0"]:focus {
+  outline: 3px solid var(--color-focus);
+  border-radius: 4px;
+  padding: 0.2rem;
+}
+
+/* ======== Responsividade ======== */
+@media (max-width: 768px) {
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-panels {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sala de Leitura Acessível</title>
+
+  <!-- VLibras CSS -->
+  <link rel="stylesheet" href="https://vlibras.gov.br/app/vlibras-plugin.css">
+
+  <style>
+    :root {
+      --primary: #2e7d32;
+      --primary-dark: #1b5e20;
+      --primary-light: #66bb6a;
+      --text: #222;
+      --background: #fff;
+
+      --hc-bg: #000;
+      --hc-text: #fff;
+      --hc-primary: #00ff00;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--background);
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav button {
+      margin: 0 0.5rem;
+      padding: 10px 16px;
+      font-size: 15px;
+      cursor: pointer;
+      background: var(--primary-dark);
+      border: none;
+      border-radius: 6px;
+      color: white;
+    }
+
+    nav button:hover {
+      background: var(--primary-light);
+    }
+
+    main {
+      padding: 1rem 2rem;
+    }
+
+    .card {
+      border: 2px solid var(--primary);
+      padding: 16px;
+      border-radius: 8px;
+      margin: 1rem 0;
+      background: #f1f8e9;
+    }
+
+    body.high-contrast {
+      background: var(--hc-bg);
+      color: var(--hc-text);
+    }
+
+    body.high-contrast header {
+      background: var(--hc-bg);
+      color: var(--hc-primary);
+      border-bottom: 2px solid var(--hc-primary);
+    }
+
+    body.high-contrast nav button {
+      background: var(--hc-bg);
+      color: var(--hc-primary);
+      border: 2px solid var(--hc-primary);
+    }
+
+    body.zoom-110 { font-size: 110%; }
+    body.zoom-125 { font-size: 125%; }
+    body.zoom-150 { font-size: 150%; }
+
+    .skip-link {
+      position: absolute;
+      left: -999px;
+      top: -999px;
+      background: var(--primary-dark);
+      color: white;
+      padding: 10px;
+      z-index: 1000;
+    }
+
+    .skip-link:focus {
+      left: 10px;
+      top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- VLibras container -->
+  <div vw class="enabled">
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <!-- VLibras script -->
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+  <!-- ✔ ADICIONADO — SEM ISSO NÃO FUNCIONA -->
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+
+  <!-- Skip para acessibilidade -->
+  <a href="#conteudo" class="skip-link">Ir para o conteúdo</a>
+
+  <header>
+    <h1>Sala de Leitura Acessível</h1>
+    <nav aria-label="Ferramentas de acessibilidade">
+      <button onclick="aumentarZoom()">Zoom +</button>
+      <button onclick="diminuirZoom()">Zoom -</button>
+      <button onclick="resetZoom()">Reset Zoom</button>
+      <button onclick="toggleContraste()">Alto Contraste</button>
+    </nav>
+  </header>
+
+  <!-- React monta aqui -->
+  <div id="root"></div>
+
+  <script>
+    let zoomLevel = 100;
+
+    function atualizarZoom() {
+      document.body.classList.remove("zoom-110", "zoom-125", "zoom-150");
+
+      if (zoomLevel >= 150) document.body.classList.add("zoom-150");
+      else if (zoomLevel >= 125) document.body.classList.add("zoom-125");
+      else if (zoomLevel >= 110) document.body.classList.add("zoom-110");
+    }
+
+    function aumentarZoom() {
+      zoomLevel = Math.min(zoomLevel + 15, 150);
+      atualizarZoom();
+    }
+
+    function diminuirZoom() {
+      zoomLevel = Math.max(zoomLevel - 15, 100);
+      atualizarZoom();
+    }
+
+    function resetZoom() {
+      zoomLevel = 100;
+      atualizarZoom();
+    }
+
+    function toggleContraste() {
+      document.body.classList.toggle("high-contrast");
+    }
+  </script>
+
+</body>
+</html>
